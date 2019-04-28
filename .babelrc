@@ -1,0 +1,24 @@
+{
+  "presets": [
+    [
+      "@babel/preset-env",
+      {
+        "useBuiltIns": "usage",
+        "targets": {
+          "browsers": [
+            ">0.2%",
+            "not dead",
+            "not ie <= 9",
+            "not op_mini all",
+            "ie 10",
+            "ie 11"
+          ]
+        }
+      }
+    ]
+  ],
+  "compact" : false,
+  "ignore": [
+    "node_modules"
+  ]
+}

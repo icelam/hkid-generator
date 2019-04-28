@@ -1,0 +1,64 @@
+{
+  "env": {
+    "browser": true,
+    "commonjs": true,
+    "es6": true,
+    "node": true
+  },
+  "extends": ["eslint:recommended", "airbnb-base"],
+  "settings": {
+    "import/resolver": {
+      "webpack": {
+        "config": "./webpack/webpack.base.conf.js"
+      },
+      "extensions": [".js"]
+    }
+  },
+  "parserOptions": {
+    "sourceType": "module"
+  },
+  "rules": {
+    "no-console": [
+      "off"
+    ],
+    "object-curly-newline": [
+      "error",
+      {
+        "ImportDeclaration": "never",
+        "ExportDeclaration": "never"
+      }
+    ],
+    "no-plusplus": [
+      "off"
+    ],
+    "no-nested-ternary": [
+      "off"
+    ],
+    "no-useless-escape": [
+      "off"
+    ],
+    "no-underscore-dangle": [
+      "off"
+    ],
+    "no-unused-expressions": [
+      2,
+      { "allowTernary": true }
+    ],
+    "comma-dangle": [
+      "error",
+      "never"
+    ],
+    "max-len": [
+      "error",
+      { "code": 150 }
+    ],
+    "import/no-extraneous-dependencies": [
+      "error",
+      {
+        "devDependencies": true,
+        "optionalDependencies": false,
+        "peerDependencies": false
+      }
+    ]
+  }
+}

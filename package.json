@@ -1,0 +1,49 @@
+{
+  "name": "apple-advertisement",
+  "version": "1.0.0",
+  "description": "「蘋果廣告製作公司」廣告生成器",
+  "private": true,
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "convertFrames": "node ./raw/imageToBase64.js > ./src/assets/js/images.js",
+    "build": "webpack --config webpack/webpack.prod.conf.js  --colors",
+    "dev": "webpack-dev-server --open --config webpack/webpack.dev.conf.js"
+  },
+  "author": "Ice Lam",
+  "license": "ISC",
+  "devDependencies": {
+    "@babel/core": "^7.2.2",
+    "@babel/preset-env": "^7.2.3",
+    "babel-loader": "^8.0.4",
+    "clean-webpack-plugin": "^0.1.19",
+    "copy-webpack-plugin": "^4.5.4",
+    "core-js": "^2.6.5",
+    "css-loader": "^1.0.0",
+    "eslint": "^5.7.0",
+    "eslint-config-airbnb-base": "^13.1.0",
+    "eslint-import-resolver-webpack": "^0.11.1",
+    "eslint-loader": "^2.1.1",
+    "eslint-plugin-import": "^2.16.0",
+    "file-loader": "^2.0.0",
+    "html-loader": "^0.5.5",
+    "html-webpack-plugin": "^4.0.0-beta.2",
+    "mini-css-extract-plugin": "^0.4.4",
+    "node-sass": "^4.9.4",
+    "sass-loader": "^7.1.0",
+    "style-loader": "^0.23.1",
+    "uglifyjs-webpack-plugin": "^2.0.1",
+    "url-loader": "^1.1.2",
+    "webpack": "^4.28.1",
+    "webpack-bundle-analyzer": "^3.0.3",
+    "webpack-cli": "^3.1.2",
+    "webpack-dev-server": "^3.1.11",
+    "webpack-merge": "^4.1.4",
+    "workbox-webpack-plugin": "^4.1.0"
+  },
+  "dependencies": {
+    "@babel/polyfill": "^7.0.0",
+    "clipboard": "2.0.4",
+    "fullpage.js": "2.9.6",
+    "jquery": "^3.4.0"
+  }
+}
