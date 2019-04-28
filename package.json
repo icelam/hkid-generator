@@ -1,7 +1,7 @@
 {
-  "name": "apple-advertisement",
+  "name": "hkid-generator",
   "version": "1.0.0",
-  "description": "「蘋果廣告製作公司」廣告生成器",
+  "description": "Genetates or validates Hong Kong Identity Card number.",
   "private": true,
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
