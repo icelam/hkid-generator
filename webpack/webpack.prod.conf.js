@@ -4,6 +4,7 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const UglifyJSPlugin = require('uglifyjs-webpack-plugin');
 const WorkboxPlugin = require('workbox-webpack-plugin');
 const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer');
+const OptimizeCssnanoPlugin = require('@intervolga/optimize-cssnano-plugin');
 
 const baseWebpackConfig = require('./webpack.base.conf');
 
@@ -34,7 +35,17 @@ module.exports = merge(baseWebpackConfig, {
       parallel: true
     }),
     new MiniCssExtractPlugin({
-      filename: 'assets/css/bundle.css'
+      filename: 'assets/css/[name].bundle.css'
+    }),
+    new OptimizeCssnanoPlugin({
+      sourceMap: false,
+      cssnanoOptions: {
+        preset: ['default', {
+          discardComments: {
+            removeAll: true
+          }
+        }]
+      }
     }),
     new WorkboxPlugin.GenerateSW({
       clientsClaim: false,
