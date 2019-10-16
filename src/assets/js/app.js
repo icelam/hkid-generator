@@ -47,16 +47,32 @@ $(() => {
   $('#generateBtn').on('click', printHKID);
 
   // Check HKID on keyboard release and input blur
-  $('#hkid').on('keyup blur', function () {
+  $('#hkid').on('keyup blur', function validateInput() {
     const str = $(this).val();
     let msg = '';
     if (str.length > 7) {
       if (isHKID(str)) { // Yes!!!
         msg = 'This is a correct HKID.';
+
+        // GTM event tracking
+        if (typeof dataLayer !== 'undefined') {
+          window.dataLayer.push({
+            event: 'validateHKIDPass',
+            userInput: str
+          });
+        }
       } else { // No...
         const splitHKID = processHKID(str); // For calculating check digit
         if (splitHKID) {
           msg = `The correct check digit should be ${calculateCheckDigit(splitHKID[1], splitHKID[2])}.`;
+
+          // GTM event tracking
+          if (typeof dataLayer !== 'undefined') {
+            window.dataLayer.push({
+              event: 'validateHKIDFail',
+              userInput: str
+            });
+          }
         } else { // For length > 7 but not in HKID format
           msg = 'This is not a correct HKID format.';
         }
