@@ -125,10 +125,10 @@ const isHKID = (str) => {
     console.log(`Valid check digit: \t${verify}`);
   }
 
-  console.log(typeof verify);
-  console.log(typeof matchArray[3]);
+  /* console.log(typeof verify);
+  console.log(typeof matchArray[3]); */
 
-  return verify == matchArray[3];
+  return verify.toString() === matchArray[3].toString();
 };
 
 export { randomHKID, isHKID, processHKID, calculateCheckDigit };
