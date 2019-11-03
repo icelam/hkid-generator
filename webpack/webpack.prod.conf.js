@@ -25,11 +25,11 @@ module.exports = merge(baseWebpackConfig, {
     new UglifyJSPlugin({
       uglifyOptions: {
         compress: {
-          warnings: false,
           drop_debugger: true,
           drop_console: true
         },
-        ecma: 8
+        ecma: 8,
+        warnings: false
       },
       sourceMap: true,
       parallel: true

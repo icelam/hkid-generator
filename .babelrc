@@ -4,22 +4,9 @@
       "@babel/preset-env",
       {
         "useBuiltIns": "usage",
-        "corejs": "2.6.5",
-        "targets": {
-          "browsers": [
-            ">0.2%",
-            "not dead",
-            "not ie <= 9",
-            "not op_mini all",
-            "ie 10",
-            "ie 11"
-          ]
-        }
+        "corejs": "3.0.0"
       }
     ]
   ],
-  "compact" : false,
-  "ignore": [
-    "node_modules"
-  ]
+  "compact" : false
 }
