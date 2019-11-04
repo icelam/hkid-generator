@@ -1,6 +1,6 @@
 {
   "name": "hkid-generator",
-  "version": "1.0.0",
+  "version": "3.0.0",
   "description": "Genetates or validates Hong Kong Identity Card number.",
   "private": true,
   "scripts": {
