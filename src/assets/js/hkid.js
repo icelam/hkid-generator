@@ -81,10 +81,8 @@ const randomHKID = () => {
   const checkdigit = calculateCheckDigit(randomAlphabet, randomNumber);
 
   // Debug Message
-  if (window.console) {
-    // console.log("HKID Mode: " + hkidMode);
-    console.log(`Generating HKID...\n\nAlphabet: \t\t${randomAlphabet}\nNumber: \t\t${randomNumber}\nResult: \t\t${checkdigit}`);
-  }
+  // console.log("HKID Mode: " + hkidMode);
+  console.log(`Generating HKID...\n\nAlphabet: \t\t${randomAlphabet}\nNumber: \t\t${randomNumber}\nResult: \t\t${checkdigit}`);
 
   return randomAlphabet + randomNumber + checkdigit;
 };
@@ -121,9 +119,7 @@ const isHKID = (str) => {
   const verify = calculateCheckDigit(matchArray[1], matchArray[2]);
 
   // Debug Message
-  if (window.console) {
-    console.log(`Valid check digit: \t${verify}`);
-  }
+  console.log(`Valid check digit: \t${verify}`);
 
   /* console.log(typeof verify);
   console.log(typeof matchArray[3]); */
