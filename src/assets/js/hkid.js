@@ -7,14 +7,22 @@
 const getRandomInt = (min, max) => Math.floor(Math.random() * (max - min + 1)) + min;
 
 /*
+ * Remove brackets and convert HKID to uppercase
+ * @param {string}  str - Full HKID number
+ * @return  {string}
+ */
+const formatHKID = (str) => str.replace(/[\(\)]/g, '').toUpperCase();
+
+/*
  * Check if HKID contains 1 or 2 alphabet, 6 number and 1 check digit and return them in 4 parts: [full hkid, char, num, check digit]
  * @param {string}  str - Full HKID number
  * @return  {boolean}
  */
 const processHKID = (str) => {
-  // Check if HKID contains 1 or 2 alphabet, 6 number and 1 check digit
+  // Remove brackets before spliting
+  const formattedStr = formatHKID(str);
   const hkidRegex = new RegExp(/^([a-zA-Z]{1,2})([0-9]{6})([aA0-9])$/);
-  return str.toUpperCase().match(hkidRegex);
+  return formattedStr.toUpperCase().match(hkidRegex);
 };
 
 /*
@@ -98,13 +106,13 @@ const isHKID = (str) => {
     return false;
   }
 
+  // Remove brackets and convert HKID to uppercase
+  const uppercaseStr = formatHKID(str);
+
   // HKID length must be 8 or 9
-  if (str.length < 8 || str.length > 9) {
+  if (uppercaseStr.length < 8 || uppercaseStr.length > 9) {
     return false;
   }
-
-  // Remove brackets and convert HKID to uppercase
-  const uppercaseStr = str.replace(/[\(\)]/g, '').toUpperCase();
 
   // Check if HKID contains 1 or 2 alphabet, 6 number and 1 check digit
   // const hkidRegex = new RegExp(/^([a-zA-Z]{1,2})([0-9]{6})([aA0-9])$/);
