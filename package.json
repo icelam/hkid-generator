@@ -5,9 +5,9 @@
   "private": true,
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "convertFrames": "node ./raw/imageToBase64.js > ./src/assets/js/images.js",
     "build": "webpack --config webpack/webpack.prod.conf.js  --colors",
-    "dev": "webpack-dev-server --open --config webpack/webpack.dev.conf.js"
+    "dev": "webpack-dev-server --open --config webpack/webpack.dev.conf.js",
+    "lint": "eslint --ext .js src"
   },
   "author": "Ice Lam",
   "license": "ISC",
