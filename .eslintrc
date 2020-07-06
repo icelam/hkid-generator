@@ -7,12 +7,15 @@
   },
   "extends": ["eslint:recommended", "airbnb-base"],
   "settings": {
-    "import/resolver": {
-      "webpack": {
-        "config": "./webpack/webpack.base.conf.js"
-      },
-      "extensions": [".js"]
-    }
+    "import/resolver": [
+      "node",
+      {
+        "webpack": {
+          "config": "./webpack/webpack.base.conf.js"
+        },
+        "extensions": [".js"]
+      }
+    ]
   },
   "parserOptions": {
     "sourceType": "module"
@@ -51,14 +54,6 @@
     "max-len": [
       "error",
       { "code": 150 }
-    ],
-    "import/no-extraneous-dependencies": [
-      "error",
-      {
-        "devDependencies": true,
-        "optionalDependencies": false,
-        "peerDependencies": false
-      }
     ]
   }
 }

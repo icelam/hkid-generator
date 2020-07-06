@@ -1,3 +1,4 @@
+/* eslint "import/no-extraneous-dependencies": ["error", {"optionalDependencies": false} ] */
 const path = require('path');
 const Webpack = require('webpack');
 const merge = require('webpack-merge');

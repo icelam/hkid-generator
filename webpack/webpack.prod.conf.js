@@ -1,3 +1,4 @@
+/* eslint "import/no-extraneous-dependencies": ["error", {"optionalDependencies": false} ] */
 const Webpack = require('webpack');
 const merge = require('webpack-merge');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
@@ -21,7 +22,7 @@ module.exports = merge(baseWebpackConfig, {
     }),
     new Webpack.optimize.ModuleConcatenationPlugin(),
     new MiniCssExtractPlugin({
-      filename: 'assets/css/[name].bundle.css'
+      filename: 'assets/css/[name].[chunkhash:8].css'
     }),
     new OptimizeCssnanoPlugin({
       sourceMap: false,
