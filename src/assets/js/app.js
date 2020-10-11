@@ -5,6 +5,8 @@ import ClipboardJS from 'clipboard';
 
 window.dataLayer = window.dataLayer || [];
 
+let validationDebounce = null;
+
 // print HKID
 const printHKID = () => {
   const generatedHKID = randomHKID();
@@ -17,6 +19,42 @@ const printHKID = () => {
       generatedHKID
     });
   }
+};
+
+// validate input
+const validateInput = (str) => {
+  let message = '';
+  if (!str) {
+    message = '';
+  } else if (isHKID(str)) { // Yes!!!
+    message = 'This is a correct HKID.';
+
+    // GTM event tracking
+    if (typeof dataLayer !== 'undefined') {
+      window.dataLayer.push({
+        event: 'validateHKIDPass',
+        userInput: str
+      });
+    }
+  } else { // No...
+    const splitHKID = processHKID(str); // For calculating check digit
+    if (splitHKID) {
+      message = `The correct check digit should be ${calculateCheckDigit(splitHKID[1], splitHKID[2])}.`;
+
+      // GTM event tracking
+      if (typeof dataLayer !== 'undefined') {
+        window.dataLayer.push({
+          event: 'validateHKIDFail',
+          userInput: str
+        });
+      }
+    } else { // For length > 7 but not in HKID format
+      message = 'This is not a correct HKID format.';
+    }
+  }
+
+  // Show me the answer
+  $('.validationResult').text(message);
 };
 
 $(() => {
@@ -47,42 +85,16 @@ $(() => {
   $('#generateBtn').on('click', printHKID);
 
   // Check HKID on keyboard release and input blur
-  $('#hkid').on('keyup blur', function validateInput() {
-    const str = $(this).val();
-    let msg = '';
-    if (str.length > 7) {
-      if (isHKID(str)) { // Yes!!!
-        msg = 'This is a correct HKID.';
-
-        // GTM event tracking
-        if (typeof dataLayer !== 'undefined') {
-          window.dataLayer.push({
-            event: 'validateHKIDPass',
-            userInput: str
-          });
-        }
-      } else { // No...
-        const splitHKID = processHKID(str); // For calculating check digit
-        if (splitHKID) {
-          msg = `The correct check digit should be ${calculateCheckDigit(splitHKID[1], splitHKID[2])}.`;
-
-          // GTM event tracking
-          if (typeof dataLayer !== 'undefined') {
-            window.dataLayer.push({
-              event: 'validateHKIDFail',
-              userInput: str
-            });
-          }
-        } else { // For length > 7 but not in HKID format
-          msg = 'This is not a correct HKID format.';
-        }
-      }
-
-      // Show me the answer
-      $('.validationResult').text(msg);
+  // Debounce when input length is not empty and length is less than 7
+  $('#hkid').on('keyup blur', (event) => {
+    const str = event.target.value;
+    clearTimeout(validationDebounce);
+    if (!str || str.length > 7) {
+      validateInput(str);
     } else {
-      // More info needed
-      $('.validationResult').text('');
+      validationDebounce = setTimeout(() => {
+        validateInput(str);
+      }, 500);
     }
   });
 });
