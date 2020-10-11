@@ -1,6 +1,6 @@
 /* eslint "import/no-extraneous-dependencies": ["error", {"optionalDependencies": false} ] */
 const Webpack = require('webpack');
-const merge = require('webpack-merge');
+const { merge } = require('webpack-merge');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const WorkboxPlugin = require('workbox-webpack-plugin');
 const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer');

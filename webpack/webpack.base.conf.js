@@ -26,11 +26,24 @@ module.exports = {
   },
   plugins: [
     new CleanWebpackPlugin(),
-    new CopyWebpackPlugin([
-      { from: path.resolve(__dirname, '../src/assets/images'), to: 'assets/images', ignore: ['**/.DS_Store'] },
-      { from: path.resolve(__dirname, '../src/assets/fonts'), to: 'assets/fonts', ignore: ['**/.DS_Store'] },
-      { from: path.resolve(__dirname, '../src/manifest.json'), to: 'manifest.json' }
-    ]),
+    new CopyWebpackPlugin({
+      patterns: [
+        {
+          from: path.resolve(__dirname, '../src/assets/images'),
+          to: 'assets/images',
+          globOptions: { ignore: ['**/.DS_Store'] }
+        },
+        {
+          from: path.resolve(__dirname, '../src/assets/fonts'),
+          to: 'assets/fonts',
+          globOptions: { ignore: ['**/.DS_Store'] }
+        },
+        {
+          from: path.resolve(__dirname, '../src/manifest.json'),
+          to: 'manifest.json'
+        }
+      ]
+    }),
     new HtmlWebpackPlugin({
       template: path.resolve(__dirname, '../src/index.html'),
       minify: {

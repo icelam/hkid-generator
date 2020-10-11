@@ -1,7 +1,7 @@
 /* eslint "import/no-extraneous-dependencies": ["error", {"optionalDependencies": false} ] */
 const path = require('path');
 const Webpack = require('webpack');
-const merge = require('webpack-merge');
+const { merge } = require('webpack-merge');
 const baseWebpackConfig = require('./webpack.base.conf');
 
 module.exports = merge(baseWebpackConfig, {
