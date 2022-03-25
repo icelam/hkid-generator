@@ -2,21 +2,21 @@
  * Generate random integer between specific range
  * @param {number}  min - Minimum value
  * @param {number}  max - Maximum value
- * @return  {number}
+ * @returns  {number}
  */
 const getRandomInt = (min, max) => Math.floor(Math.random() * (max - min + 1)) + min;
 
 /*
  * Remove brackets and convert HKID to uppercase
  * @param {string}  str - Full HKID number
- * @return  {string}
+ * @returns  {string}
  */
 const formatHKID = (str) => str.replace(/[\(\)]/g, '').toUpperCase();
 
 /*
  * Check if HKID contains 1 or 2 alphabet, 6 number and 1 check digit and return them in 4 parts: [full hkid, char, num, check digit]
  * @param {string}  str - Full HKID number
- * @return  {boolean}
+ * @returns  {(array|null)}
  */
 const processHKID = (str) => {
   // Remove brackets before spliting
@@ -29,7 +29,7 @@ const processHKID = (str) => {
  * Calculate check digit
  * @param {string}  charPart - Alphabet in HKID
  * @param {string}  numPart - First 6 numerber in HKID
- * @return  {(number|string)}
+ * @returns  {(number|string)}
  */
 const calculateCheckDigit = (charPart, numPart) => {
   // Maximum alphabet should be 2
@@ -67,7 +67,7 @@ const calculateCheckDigit = (charPart, numPart) => {
 
 /*
  * Generate random HKID
- * @return  {string}
+ * @returns  {string}
  */
 const randomHKID = () => {
   // Generate a random number between 1 - 10
@@ -98,7 +98,7 @@ const randomHKID = () => {
 /*
  * Check string is valid hkid
  * @param {string}  str - Full HKID number
- * @return  {boolean}
+ * @returns  {boolean}
  */
 const isHKID = (str) => {
   // Empty HKID
